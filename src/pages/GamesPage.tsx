@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Layout } from "../components/Layout";
 import { miniGames } from "../data/games";
 
@@ -24,7 +25,7 @@ export function GamesPage() {
     <Layout>
       <h2 style={{ fontSize: 20, marginBottom: 12 }}>Mini games 🎲</h2>
       <p style={{ marginBottom: 12, color: "#9ca3af", fontSize: 14 }}>
-        Use these when you want to make the conversation more fun without forcing it.
+        Tap a game to open it and use the prompts directly in your chat or in person.
       </p>
 
       <label style={{ display: "block", marginBottom: 12, fontSize: 14 }}>
@@ -53,38 +54,49 @@ export function GamesPage() {
 
       <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
         {filteredGames.map((game) => (
-          <div
+          <Link
             key={game.id}
-            style={{
-              padding: 12,
-              borderRadius: 10,
-              border: "1px solid #1f2937",
-              backgroundColor: "#020617",
-              fontSize: 14,
-            }}
+            to={`/games/${game.id}`}
+            style={{ textDecoration: "none", color: "inherit" }}
           >
             <div
               style={{
-                fontWeight: 600,
-                marginBottom: 6,
-                color: "#e5e7eb",
+                padding: 12,
+                borderRadius: 10,
+                border: "1px solid #1f2937",
+                backgroundColor: "#020617",
+                fontSize: 14,
+                cursor: "pointer",
               }}
             >
-              {game.title}
+              <div
+                style={{
+                  fontWeight: 600,
+                  marginBottom: 4,
+                  color: "#e5e7eb",
+                }}
+              >
+                {game.title}
+              </div>
+              <div
+                style={{
+                  color: "#d1d5db",
+                  marginBottom: 6,
+                  fontSize: 13,
+                }}
+              >
+                {game.description}
+              </div>
+              <div
+                style={{
+                  fontSize: 11,
+                  color: "#9ca3af",
+                }}
+              >
+                Tap to play →
+              </div>
             </div>
-            <div style={{ color: "#d1d5db", marginBottom: 6 }}>
-              {game.description}
-            </div>
-            <div
-              style={{
-                fontSize: 12,
-                color: "#9ca3af",
-              }}
-            >
-              Suggested for:{" "}
-              {game.suggestedSituations.join(" · ").replace(/_/g, " ")}
-            </div>
-          </div>
+          </Link>
         ))}
       </div>
     </Layout>
