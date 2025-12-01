@@ -7,24 +7,25 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: "autoUpdate",
+      includeAssets: ["favicon.ico", "apple-touch-icon.png", "wingman-512.png"],
       manifest: {
         name: "Wingman",
         short_name: "Wingman",
-        description: "Your pocket flirting co-pilot",
+        description: "Your pocket flirting co-pilot.",
         theme_color: "#0f172a",
         background_color: "#020617",
         display: "standalone",
         start_url: "/",
         icons: [
           {
-            src: "/vite.svg", // esto lo cambiamos después por tu logo
+            src: "/wingman-192.png",
             sizes: "192x192",
-            type: "image/svg+xml",
+            type: "image/png",
           },
           {
-            src: "/vite.svg",
+            src: "/wingman-512.png",
             sizes: "512x512",
-            type: "image/svg+xml",
+            type: "image/png",
           },
         ],
       },
