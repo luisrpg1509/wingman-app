@@ -149,7 +149,7 @@ export const questions: Question[] = [
     id: 20,
     text: "Do you believe in “right person, wrong time” or is it all about effort?",
     type: "flirty",
-    situation: "deep",
+    situation: "any",
     language: "en",
   },
 
